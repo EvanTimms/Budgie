@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "My Extension",
+    "version": "0.1.0",
+    "Author": "Evan Perret-Timms",
+    
+    "default_locale": "en",
+    "description": "TO BE IMPLEMENTED",
+    "brower_action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["activeTab"]
+
+}

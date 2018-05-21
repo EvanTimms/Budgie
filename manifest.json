@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
-    "name": "Budgeter",
+    "name": "oBudget",
     "version": "0.1.4",
     "author": "Evan Perret-Timms",
     "description": "Chrome extension to track and display your online shopping",
-    "permissions": ["storage"],
+    "permissions": ["storage", "activeTab"],
     "content_scripts":[
         {
             "matches": [
@@ -20,7 +20,7 @@
     "browser_action":{
         "default_icon": "/icons/test.png",
         "default_popup":"popup.html",
-        "default_title":"Welcome to Budgeter"
+        "default_title":"oBudget v0.1.4"
     }
 
 }

@@ -1,7 +1,12 @@
 //adding listen to form and retrieving data when form is submitted
 document.getElementById('form').addEventListener("submit", function(){
-    // TODO: use submitted date version
-    // export form variables to use in main.js
+    //form results
+    var formResults = {
+        amount: "",
+        resetInterval: "",
+        resetDate: ""
+    };
+
     var form = document.getElementById('form');
 
     var allowance = form.elements[0].value;
@@ -10,6 +15,8 @@ document.getElementById('form').addEventListener("submit", function(){
     }else{
         allowance = String(allowance);
     }
+    //saving to obj
+    formResults.amount = allowance;
 
     //checking too see which value was selected
     var checkedButton;
@@ -24,11 +31,20 @@ document.getElementById('form').addEventListener("submit", function(){
     }else{
         console.log("Nothing Selected(NEW FORM)");
     }
+    formResults.resetInterval = checkedButton;
 
     //checking if current date is to be used
     var useCurrentDate = form.elements[5].checked;
-    
+    if(useCurrentDate){
+        formResults.resetDate = "usecurr";
+    }else{
+        formResults.resetDate = form.elements[6].value;
+    }
 
+    //TODO: Pass to background page
+    chrome.runtime.sendMessage({greeting: "sending results"}, formResults, function(response){
+        console.log(response.farewell);
+    })
 });
 
 //added listener to cross out date selection if checkbox selected
@@ -40,3 +56,4 @@ document.getElementById("setOption1").addEventListener("click", function(){
         dateOption.style.display = "none";
     }
 });
+

@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "",
-    "version": "0.1.7",
+    "version": "0.2.0",
     "author": "Evan Perret-Timms",
     "description": "Chrome extension to track and display your online shopping",
     "permissions": ["storage", "activeTab"],

@@ -12,3 +12,4 @@ Chrome Extension that allows you to track and bugdet your online shopping.
     *Styling with Materialize CSS
     *Icons/Fonts
     *"Smart Url Parsing" For faster use on webpages
+    *Profile page

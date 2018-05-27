@@ -20,7 +20,7 @@
     "browser_action":{
         "default_icon": "/icons/test.png",
         "default_popup":"/views/main.html",
-        "default_title":" v0.1.4"
+        "default_title":""
     }
 
 }

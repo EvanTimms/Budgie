@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <title>Budget Extension</title>
     <!-- TODO: Add google fonts, fontawesome icons -->
-    <link rel="stylesheet" href="/public/stylesheets/main.css"> 
+    <link rel="stylesheet" href="/public/stylesheets/main.css">  
 </head>
 <body>
     <h1>Welcome To "Budget Extension"</h1>
     <h2>Budget Display Will Go Here</h2>
-    <a id="new" href="" >Set New Bugdet</a>
+    <canvas>
+
+    </canvas>
+    <p>You have <span id="fundsRemaining"></span> amount left this month</p>
+    <p>Your budget will reset on: <span id="daysRemaining"></span></p>
+    <a id="new" href="/views/new.html" >Set New Bugdet</a>
     <br>
     <a id="settings" href="/views/edit.html">Edit Settings</a>
+    <br>
+    <a href="/views/login.html">Logout</a>
+
+    <!-- Scripts -->
+    <script src="../js/popup.js"></script> 
 </body>
+
 </html>

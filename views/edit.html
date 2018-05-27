@@ -2,10 +2,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Budget Extension</title>
-    <!-- TODO: Add google fonts, fontawesome icons -->
-    <link rel="stylesheet" href="../public/stylesheets/popup.css"> 
+    <link rel="stylesheet" href="../public/stylesheets/main.css">
+    <script src="../js/popup.js"></script>  
 </head>
 <body>
     <h1>Edit Budget</h1>
 </body>
+<footer>
+    <a href="/views/main.html">Home</a>
+    <div>
+        <p>Edit your budget below</p>
+        <input type="text" name="amount" placeholder="Enter Amount" value="450">
+        <div>
+
+            <input type="radio" id="weeklyChoice" name="time" value="weekly" checked="checked">
+            <label for="weeklyChoice">Weekly</label>
+
+            <input type="radio" id="biweeklyChoice" name="time" value="biweekly">
+            <label for="biweeklyChoice">Bi-Weekly</label>
+
+            <input type="radio" id="monthlyChoice" name="time" value="monthly">
+            <label for="monthlyChoice">Monthly</label>
+
+            <input type="radio" id="yearlyChoice" name="time" value="yearly">
+            <label for="yearlyChoice">Yearly</label>
+
+        </div>
+        <div>
+
+            <input type="checkbox" id="setOption1" name="useCurrentDate">
+            <label for="setOption1">Use Current Date</label>
+            <p></p>
+            <input type="date" id="setOption2" name="useSelectedDate">
+            <label for="setOption2">Use Another Date</label>
+
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </div>
+    <script src="../js/form.js"></script>
+</footer>
 </html>

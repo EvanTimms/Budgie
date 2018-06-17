@@ -1,4 +1,14 @@
 //Placeholder for dynamic stuff later
-// var remaining = document.getElementById("remaining");
-// remaining.innerText = form.amount;
+const fundsRemaining = document.getElementById("fundsRemaining");
+const daysRemaining = document.getElementById("daysRemaining");
+const resetInterval = document.getElementById("resetInterval");
+
+chrome.storage.local.get(['formResults'], function(result){
+    if(result.formResults != undefined){
+        fundsRemaining.textContent = result.formResults.amount;
+        resetInterval.textContent = result.formResults.resetInterval;
+        daysRemaining.textContent = result.formResults.resetDate;
+    }
+});
+
 

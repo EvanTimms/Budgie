@@ -1,51 +1,103 @@
+const formResults = {
+    amount: 0,
+    resetInterval: 2,//monthly as default
+    resetDate: ""
+};
+
+function loadData(){
+    let form = document.getElementById('form');
+
+    //loading from storage
+    chrome.storage.local.get(['formResults'], function(result){
+        //loading monthly amount
+        form.elements[0].value = result.formResults.amount;
+        
+        //loading reset interval
+        switch(result.formResults.resetInterval){
+            case 0:
+                form.elements[1].checked = true;
+                break;
+            case 1:
+                form.elements[2].checked = true;
+                break;
+            case 2:
+                form.elements[3].checked = true;
+                break;
+            case 3:
+                form.elements[4].checked = true;
+                break;
+            default:
+                form.elements[2].checked = true;
+                console.log("Error in assigning reset interval");
+        }
+
+        //loading reset date information
+        form.elements[5].checked = false;
+        form.elements[6].value = result.formResults.resetDate;
+    });
+
+}
+
+//If on the edit page, pull data from storage
+if(window.location.href.includes('edit.html')){
+    loadData();
+}
+
+
 //adding listen to form and retrieving data when form is submitted
 document.getElementById('form').addEventListener("submit", function(){
     //form results
-    var formResults = {
-        amount: "",
-        resetInterval: "",
-        resetDate: ""
-    };
 
-    var form = document.getElementById('form');
-
-    var allowance = form.elements[0].value;
-    if(allowance == null){
-        allowance = "0";
-    }else{
-        allowance = String(allowance);
-    }
-    //saving to obj
-    formResults.amount = allowance;
+    let form = document.getElementById('form');
+    //saving amount
+    formResults.amount = (form.elements[0].value == null) ? 0 : form.elements[0].value;
 
     //checking too see which value was selected
-    var checkedButton;
+    let resetInterval;
     if(form.elements[1].checked){
-        checkedButton = "weekly";
+        resetInterval = 0;//weekly
     }else if(form.elements[2].checked){
-        checkedButton = "biweekly";
+        resetInterval = 1; //biweekly
     }else if(form.elements[3].checked){
-        checkedButton = "monthly";
+        resetInterval = 2; //monthly
     }else if(form.elements[4].checked){
-        checkedButton = "yearly";
+        resetInterval = 3; //yearly
     }else{
         console.log("Nothing Selected(NEW FORM)");
     }
-    formResults.resetInterval = checkedButton;
+    formResults.resetInterval = resetInterval;
 
     //checking if current date is to be used
-    var useCurrentDate = form.elements[5].checked;
-    if(useCurrentDate){
-        formResults.resetDate = "usecurr";
+    if(form.elements[5].checked){
+        //generating date using Date class
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth()+1;
+        let yyyy = today.getFullYear();
+        if(dd<10) {
+            dd = '0'+dd
+        } 
+        if(mm<10) {
+            mm = '0'+mm
+        } 
+        formResults.resetDate = yyyy + '-' + mm + '-' + dd;
+
     }else{
         formResults.resetDate = form.elements[6].value;
     }
 
-    //TODO: Pass to background page
-    chrome.runtime.sendMessage({greeting: "sending results"}, formResults, function(response){
-        console.log(response.farewell);
-    })
+    chrome.storage.local.set({formResults:formResults}, function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
 });
+
+
+
+
+
 
 //added listener to cross out date selection if checkbox selected
 document.getElementById("setOption1").addEventListener("click", function(){
@@ -56,4 +108,6 @@ document.getElementById("setOption1").addEventListener("click", function(){
         dateOption.style.display = "none";
     }
 });
+
+
 

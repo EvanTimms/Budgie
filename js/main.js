@@ -10,6 +10,9 @@ const NUMTODAY = {
     3 : "yearly"
 }
 
+
+
+//function to calculate days remaining till budget reset
 function calculateDaysLeft(str){
     //get current date
     let today = new Date();
@@ -23,22 +26,54 @@ function calculateDaysLeft(str){
     if(mdy[0][0] == 0){
         mdy[0] = mdy[0][1];
     }
-    
+
     let deadline = new Date(mdy[0],mdy[1]-1,mdy[2]);
     let diff = deadline.getTime()-today.getTime();
     let days = Math.floor(diff/(1000*60*60*24));
-    // console.log(days);
-    return days;
+    return days + 1;
 }
 
-
-chrome.storage.local.get(['formResults'], function(result){
-    if(result.formResults != undefined){
-        fundsRemaining.textContent = result.formResults.amount;
-        resetInterval.textContent = NUMTODAY[result.formResults.resetInterval];
-        resetDate.textContent = result.formResults.resetDate;
-        daysRemaining.textContent =  calculateDaysLeft(result.formResults.resetDate);
+//loading data from storage
+chrome.storage.local.get(['FORMRESULTS'], function(result){
+    if(result.FORMRESULTS != undefined){
+        fundsRemaining.textContent = result.FORMRESULTS.amount;
+        resetInterval.textContent = NUMTODAY[result.FORMRESULTS.resetInterval];
+        resetDate.textContent = result.FORMRESULTS.resetDate;
+        daysRemaining.textContent =  calculateDaysLeft(result.FORMRESULTS.resetDate);
     }
 });
 
+//listener for newPurchase form
+document.getElementById('newPurchase').addEventListener('submit', function(){
+    let des = this.elements[0].value;
+    let amount = this.elements[1].value;
+    let obj = {
+        'description' : des,
+        'amount' : amount
+    };
+
+    //subtracting from current budget
+    chrome.storage.local.get(['FORMRESULTS'], function(result){
+        result.FORMRESULTS.amount -= obj.amount;
+        //updating
+        chrome.storage.local.set({FORMRESULTS:result.FORMRESULTS}, function(err){
+            if(err){
+                console.log(err);
+            }
+        });
+    });
+
+
+    //get purchase list from storage
+    chrome.storage.local.get(['PURCHASES'], function(result){
+        //adding new purchase
+        result.PURCHASES.push(obj);
+        //saving to data storage
+        chrome.storage.local.set({PURCHASES:result.PURCHASES},function(err){
+            if(err){
+                console.log(err);
+            }
+        });
+    });
+});
 

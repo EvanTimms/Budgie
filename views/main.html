@@ -12,6 +12,14 @@
     <canvas>
 
     </canvas>
+
+    <p>Add Purchase</p>
+    <form id="newPurchase" action="">
+        <input type="text" placeholder="Description">
+        <input type="number" placeholder="Amount">
+        <input type="submit">
+    </form>
+
     <p>You have <span id="fundsRemaining"></span> dollars left to spend this cycle</p>
     <p>Your reset interval is set to: <span id="resetInterval"></span></p>
     <p>Your budget will reset on: <span id="resetDate"></span></p>
@@ -20,12 +28,15 @@
     <br>
     <a id="settings" href="/views/edit.html">Edit Settings</a>
     <br>
-    <a href="/views/history.hmtl">View Spending History</a>
+    <a href="/views/history.html">View Spending History</a>
     <br>
     <a href="/views/login.html">Logout</a>
 
+
+</body>
+<footer>
     <!-- Scripts -->
     <script src="../js/main.js"></script> 
-</body>
+</footer>
 
 </html>

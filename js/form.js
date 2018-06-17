@@ -1,4 +1,4 @@
-const formResults = {
+const FORMRESULTS = {
     amount: 0,
     resetInterval: 2,//monthly as default
     resetDate: ""
@@ -8,12 +8,12 @@ function loadData(){
     let form = document.getElementById('form');
 
     //loading from storage
-    chrome.storage.local.get(['formResults'], function(result){
+    chrome.storage.local.get(['FORMRESULTS'], function(result){
         //loading monthly amount
-        form.elements[0].value = result.formResults.amount;
+        form.elements[0].value = result.FORMRESULTS.amount;
         
         //loading reset interval
-        switch(result.formResults.resetInterval){
+        switch(result.FORMRESULTS.resetInterval){
             case 0:
                 form.elements[1].checked = true;
                 break;
@@ -33,7 +33,7 @@ function loadData(){
 
         //loading reset date information
         form.elements[5].checked = false;
-        form.elements[6].value = result.formResults.resetDate;
+        form.elements[6].value = result.FORMRESULTS.resetDate;
     });
 
 }
@@ -50,7 +50,7 @@ document.getElementById('form').addEventListener("submit", function(){
 
     let form = document.getElementById('form');
     //saving amount
-    formResults.amount = (form.elements[0].value == null) ? 0 : form.elements[0].value;
+    FORMRESULTS.amount = (form.elements[0].value == null) ? 0 : form.elements[0].value;
 
     //checking too see which value was selected
     let resetInterval;
@@ -65,7 +65,7 @@ document.getElementById('form').addEventListener("submit", function(){
     }else{
         console.log("Nothing Selected(NEW FORM)");
     }
-    formResults.resetInterval = resetInterval;
+    FORMRESULTS.resetInterval = resetInterval;
 
     //checking if current date is to be used
     if(form.elements[5].checked){
@@ -80,13 +80,13 @@ document.getElementById('form').addEventListener("submit", function(){
         if(mm<10) {
             mm = '0'+mm
         } 
-        formResults.resetDate = yyyy + '-' + mm + '-' + dd;
+        FORMRESULTS.resetDate = yyyy + '-' + mm + '-' + dd;
 
     }else{
-        formResults.resetDate = form.elements[6].value;
+        FORMRESULTS.resetDate = form.elements[6].value;
     }
 
-    chrome.storage.local.set({formResults:formResults}, function(err){
+    chrome.storage.local.set({FORMRESULTS:FORMRESULTS}, function(err){
         if(err){
             console.log(err);
         }

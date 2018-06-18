@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Budgie",
     "version": "0.3.2",
-    "author": "Evan Perret-Timms",
+    "author": "Evan Timms",
     "description": "Chrome extension to track and display your online shopping",
     "permissions": ["storage", "activeTab"],
     "content_scripts":[

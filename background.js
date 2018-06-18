@@ -1,3 +1,12 @@
+//CONSTANTS FOR DATABASE
+const PURCHASES = [];
+const FORMRESULTS = {
+    exists: false,
+    amount: 0,
+    resetInterval: 2,//monthly as default
+    resetDate: ""
+};
+
 //installation listener
 chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
@@ -12,7 +21,6 @@ chrome.runtime.onInstalled.addListener(function(details){
 
         //adding blank purchase list
         //save purchases in description/amount format
-        let PURCHASES = [];
         chrome.storage.local.set({PURCHASES:PURCHASES}, function(err){
             if(err){
                 console.log(err);
@@ -20,8 +28,3 @@ chrome.runtime.onInstalled.addListener(function(details){
         });
     }
 });
-
-// //startup listener
-// chrome.runtime.onStartup.addListener(function(){
-//     console.log('starting')
-// });

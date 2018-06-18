@@ -1,6 +1,6 @@
 
 //code to pull purchase history from chrome storage
-let purchaseList = document.getElementById('history');
+var purchaseList = document.getElementById('history');
 
 function appendToList(obj){
     //create new li
@@ -12,7 +12,7 @@ function appendToList(obj){
 
 //load purchase list
 chrome.storage.local.get(['PURCHASES'], function(result){
-    for(var i = 0; i < result.PURCHASES.length; ++i){
+    for(let i = 0; i < result.PURCHASES.length; ++i){
         appendToList(result.PURCHASES[i]);
     }
 });

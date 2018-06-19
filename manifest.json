@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Budgie",
-    "version": "0.3.2",
+    "version": "0.3.13",
     "author": "Evan Timms",
     "description": "Chrome extension to track and display your online shopping",
     "permissions": ["storage", "activeTab"],
@@ -19,7 +19,7 @@
     },
     "browser_action":{
         "default_icon": "/icons/test.png",
-        "default_popup":"/views/main.html",
+        "default_popup":"/views/login.html",
         "default_title":"Budgie"
     }
 

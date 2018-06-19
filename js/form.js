@@ -54,8 +54,8 @@ function loadData(){
             //loading reset date information
             form.elements[5].checked = false;
             form.elements[6].value = result.FORMRESULTS.resetDate;
-            }
-
+        }
+        
     });
 
 }
@@ -127,6 +127,3 @@ document.getElementById("setOption1").addEventListener("click", function(){
         dateOption.style.display = "none";
     }
 });
-
-
-

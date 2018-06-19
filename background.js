@@ -1,4 +1,5 @@
 //CONSTANTS FOR DATABASE
+const ACCOUNTS = [];
 const PURCHASES = [];
 const FORMRESULTS = {
     exists: false,
@@ -6,6 +7,14 @@ const FORMRESULTS = {
     resetInterval: 2,//monthly as default
     resetDate: ""
 };
+
+
+//log in state
+var ISLOGGEDIN = false;
+
+function setPermissions(state){
+
+}
 
 //installation listener
 chrome.runtime.onInstalled.addListener(function(details){
@@ -26,5 +35,37 @@ chrome.runtime.onInstalled.addListener(function(details){
                 console.log(err);
             }
         });
+        //save empty budget
+        chrome.storage.local.set({FORMRESULTS:FORMRESULTS}, function(err){
+            if(err){
+                console.log(err);
+            }
+        });
+
+        chrome.storage.local.set({ACCOUNTS:ACCOUNTS}, function(err){
+            if(err){
+                console.log(err);
+            }
+        });
     }
+});
+
+
+//MESSAGING LISTENER
+chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
+    if(chrome.runtime.lastError){
+        console.log(chrome.runtime.lastError.string);
+        sendResponse({message: "failure"});
+    } else if(request.type == "logout-request"){
+        ISLOGGEDIN = false;
+        sendResponse({message: "success"});
+    } else if(request.type == "login-request"){
+        ISLOGGEDIN = true;
+        sendResponse({message:"success"});
+    }else{
+        console.log("Uknown Error: runtime event handler cannot determine");
+        sendResponse({message:"failure"});
+    }
+    console.log(ISLOGGEDIN);
+    setPermissions(ISLOGGEDIN);
 });

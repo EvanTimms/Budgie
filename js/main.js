@@ -11,7 +11,6 @@ const NUMTODAY = {
 }
 
 
-
 //function to calculate days remaining till budget reset
 function calculateDaysLeft(str){
     //get current date
@@ -35,7 +34,7 @@ function calculateDaysLeft(str){
 
 //loading data from storage
 chrome.storage.local.get(['FORMRESULTS'], function(result){
-    if(result.FORMRESULTS != undefined){
+    if(result.FORMRESULTS.exists){
         fundsRemaining.textContent = result.FORMRESULTS.amount;
         resetInterval.textContent = NUMTODAY[result.FORMRESULTS.resetInterval];
         resetDate.textContent = result.FORMRESULTS.resetDate;
@@ -77,3 +76,12 @@ document.getElementById('newPurchase').addEventListener('submit', function(){
     });
 });
 
+//listener for logout form
+document.getElementById('logout').addEventListener('click', ()=>{
+    chrome.runtime.sendMessage({type: "logout-request"}, (response)=>{
+        console.log(response.message);
+        if(response.message == "failure"){
+            console.log("Logout Failed");
+        }
+    });
+});

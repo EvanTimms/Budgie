@@ -1,0 +1,174 @@
+/* USE FOR main.html AND profile.html */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.Navbar {
+    background-color: #80a3db;
+    display: flex;
+    padding: 16px;
+    align-items: center;
+}
+
+.Navbar a {
+    font-weight: 500;
+    padding-left: 5px;
+    padding-right: 5px; 
+    text-decoration: none;
+    color: #fff;
+}
+
+.Navbar-Items {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.Navbar-Brand {
+    color: #fff;
+    font-weight: 600;
+    font-size: large;
+    align-self: flex-start;
+}
+
+.Navbar-Toggle {
+    color: #fff;
+    display: none;
+}
+
+.Navbar-Add {
+    color: #fff;
+    display: none;
+} 
+
+@media only screen and (max-width: 500px){
+    .Navbar {
+        padding: 10px;
+    }
+    .Navbar-Items, .Navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .Navbar-Items{
+        display: none;
+        margin-left: 0;
+    }
+    .Navbar-Toggle {
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .Navbar-ToggleShow {
+        display: flex;
+    }
+    .Navbar-Add {
+        align-self: center;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+        margin-right: auto;
+        margin-left: 5px; 
+    }
+}
+
+/* TODO: Finish Popup Styling */
+.Purchase-Popup {
+    position: absolute;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.Purchase-Popup .Purchase-Form {
+    width: 100vw;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    position: absolute;  
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.Purchase-Popup.Show {
+    visibility: visible;
+    /* animation: fadeIn 1s; */
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.Purchase-Form input {
+    outline: none;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #fff; 
+    background-color: #555;
+    border: none;
+    text-align: center;
+}
+
+.Purchase-Form input::placeholder {
+    text-align: center;
+    color: #fff;
+    
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    background-color: #fff;
+}
+
+.Pie-Chart {
+    align-self: center;
+    height: 40vh;
+    width: 100%;
+}
+
+.Line-Chart {
+    align-self: center;
+    height: 20vh;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.Main-Display {
+    text-align: center;
+}
+
+
+.Date-Day {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.Date-Number, .Date-Month, .Date-Year {
+    font-size: small;    
+}
+
+.Main-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Main-Header span#username {
+    font-weight: bold;
+}

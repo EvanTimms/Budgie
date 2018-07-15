@@ -1,0 +1,18 @@
+{
+  "name": "budgie-site-server",
+  "version": "0.5.0",
+  "description": "Budgie Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Evan Timms",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.1",
+    "nodemon": "^1.17.5"
+  }
+}

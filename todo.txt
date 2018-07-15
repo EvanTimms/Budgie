@@ -1,6 +1,0 @@
--Integrate D3 for data display
--Authentication
--Error handling
--UI design
--Logo
--Context menu

@@ -1,3 +1,3 @@
 # Budgie
 
-Description coming soon...
+Online shopping assistant

@@ -1,18 +1,25 @@
-
 // changes class to allow toggling of navbar in mobile mode and when 
 //loaded as chrome extension
 function parseNewPurchase(){
     //TODO: Implement error handling code
 
     let form = document.querySelector('.Purchase-Form');
+    let currentDate = new Date()
     let userInput = {
         description: form.elements[0].value,
-        amount: form.elements[1].value
+        amount: form.elements[1].value,
+        transaction_dd: currentDate.getDate(),
+        transaction_mm: currentDate.getMonth(),
+        transaction_yyyy: currentDate.getFullYear()
     };
+
     
     fetch(new Request('user/73298dhabc712hd6'), {
         method: 'PUT',
-        body: JSON.stringify({name: userInput})
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userInput)
     })
     .then((response)=>{
         if(response.ok){
@@ -21,6 +28,19 @@ function parseNewPurchase(){
     })
     .then((data)=>{
         console.log(data);
+    })
+    .catch((e)=> console.log(e));
+
+
+    //fetching new user data
+    fetch(new Request('user'))
+    .then((response)=>{
+        if(response.ok){
+            return response.json();
+        }
+    })
+    .then((data)=>{
+        loadData(data);
     })
     .catch((e)=> console.log(e));
 }

@@ -1,7 +1,9 @@
 var express = require('express'),
     app  = express(),
     port = 5000,
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    LocalStrategy  = require('passport-local');
 
 var indexRoutes = require('./routes/index'),
     mainRoutes = require('./routes/main'),

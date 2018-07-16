@@ -89,7 +89,16 @@ router.get('/user/:id/edit', function(req,res){
 
 // UPDATE
 router.put('/user/:id', function(req,res){
-    console.log(req.body);
+    let userInput = req.body;
+    dummyData.budget.history.push({
+        description: userInput.description,
+        amount: parseInt(userInput.amount),
+        transaction_date: new Date(userInput.transaction_yyyy,
+            userInput.transaction_mm,
+            userInput.transaction_dd)
+    });
+    dummyData.budget.remaining_amount -= parseInt(userInput.amount);
+    dummyData.budget.spent_amount += parseInt(userInput.amount);
     res.send({message: 'received'});
 });
 

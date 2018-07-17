@@ -67,7 +67,7 @@ router.get('/user', function(req,res){
     }
 });
 
-// NEW
+// NEW, after signing up will be sent here
 router.get('/user/new', function(req,res){
     res.sendFile(path.join(__dirname, '../views/user', 'new.html'));
 });

@@ -27,4 +27,14 @@ router.get('/logout', function(req,res){
     //TODO: Logout logic here
 });
 
+//Signup Route
+router.get('/signup', function(req,res){
+    res.sendFile(path.join(__dirname, '../views/index', 'signup.html'));
+});
+
+//NEW USER ROUTE
+router.post('/signup', function(req,res){
+    res.redirect('/user/new');
+});
+
 module.exports = router;

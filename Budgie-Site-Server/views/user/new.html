@@ -1,1 +1,56 @@
-new budget page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Budgie</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/new_form.css">
+    <script src="../assets/js/external/canvasjs.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="Navbar">
+            <div class="Navbar-Link Navbar-Brand">
+                Budgie
+            </div>
+            <div class="Navbar-Link Navbar-Toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="Navbar-Items">
+                <div class="Navbar-Link">
+                    <a href="/">Sign Out</a>
+                </div>
+                <div class="Navbar-Link">
+                    <a href="/new">New Budget</a>
+                </div>
+                <div class="Navbar-Link">
+                    <a href="/">Edit A Budget</a>
+                </div>
+                <div class="Navbar-Link">
+                    <a href="/">Budgie Premium</a>
+                </div> 
+            </nav>
+        </div>
+    </header>
+
+    <main class="Main">
+        <div class="Container">
+            <div class="New-Budget-Form">
+                <i id="prevBtn" class="fa fa-arrow-left"></i>
+                <i id="nextBtn" class="fa fa-arrow-right"></i>
+                <div class="Input-Group">
+                    <input type="text" id="Input-Feild">
+                    <label for="" id="Input-Label"></label>
+                    <div id="Input-Progress"></div> 
+                </div>
+                <div id="Progress-Bar"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

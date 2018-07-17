@@ -4,7 +4,7 @@ function parseNewPurchase(){
     //TODO: Implement error handling code
 
     let form = document.querySelector('.Purchase-Form');
-    let currentDate = new Date()
+    let currentDate = new Date();
     let userInput = {
         description: form.elements[0].value,
         amount: form.elements[1].value,

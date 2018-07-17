@@ -4,7 +4,7 @@
     "version": "0.5.0",
     "author": "Evan Timms",
     "description": "Chrome extension to track and display your online shopping",
-    "permissions": ["storage", "activeTab"],
+    "permissions": ["storage", "activeTab", "contextMenus", "tabs"],
     "content_scripts":[
         {
             "matches": [

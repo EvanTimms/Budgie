@@ -12,11 +12,13 @@ var mongoose = require('mongoose');
 var budgetSchema = new mongoose.Schema({
     cycle_amount: Number,
     remaining_amount: Number,
+    spent_amount: Number,
     reset_date: Date,
     history: [
         {
             description: String,
-            amount: Number
+            amount: Number,
+            transaction_date: Date
         }
     ]
 });

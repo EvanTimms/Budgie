@@ -24,6 +24,7 @@ var ISLOGGEDIN = true;
 
 var dummyData = {
     username: "EvanTimms",
+    email: "timmsevan@gmail.com",
     password: "admin",
     budget : {
         cycle_amount: 500,
@@ -74,12 +75,12 @@ router.get('/user/new', function(req,res){
 
 // CREATE
 router.post('/user', function(req,res){
-
 });
 
 // SHOW
 router.get('/user/:id', function(req,res){
     res.send(dummyData);
+
 });
 
 // EDIT

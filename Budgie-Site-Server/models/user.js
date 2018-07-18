@@ -6,9 +6,11 @@ This is the model for the user. It will contain the following:
 */
 
 var mongoose = require('mongoose');
+var passportLocalMongoose = require("passport-local-mongoose");
 
-var userSchema = new mongoose.Schema({
+var UserSchema = new mongoose.Schema({
     username: String,
+    email: String,
     password: String,
     budget: {
         type: mongoose.Schema.Types.ObjectId,
@@ -16,6 +18,8 @@ var userSchema = new mongoose.Schema({
     }
 });
 
-var User = mongoose.model('User', userSchema);
+UserSchema.plugin(passportLocalMongoose);
+
+var User = mongoose.model('User', UserSchema);
 
 module.exports = User;

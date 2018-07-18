@@ -10,3 +10,9 @@ Online shopping assistant
 - Content Scripts
 - Notification
 - Background Script
+
+### Name Ideas:
+- Upit
+- Ris
+- Vit
+- Fadvice
